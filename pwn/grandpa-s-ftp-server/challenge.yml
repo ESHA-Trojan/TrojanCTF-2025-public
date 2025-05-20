@@ -1,0 +1,21 @@
+name: Grandpa's FTP Server
+category: pwn
+description: |-
+  My grandpa asked me to help him add the newest technology to his home server. When I asked him what that meant, he said I should add an FTP server so he can more easily reach his files. I've managed to set it up, but he insisted that I integrate it with his existing authentication server. That server is one of the slowest things I have ever seen! Logging in to the server takes forever because of this! Anyway, it's done, so he can go enjoy his files now.
+
+  PS: due to technical restrictions, usernames and password can only contain upper- or lower case letters, digits, underscores and dashes. The flag format is Trojan{username:password}
+attribution: ''
+value: 294
+type: dynamic
+
+extra:
+  initial: 300
+  decay: 20
+  minimum: 150
+connection_info: ftp grandpa-chall.trojanc.tf
+
+flags:
+- Trojan{gRamP5:iS_C0ol}
+
+tags:
+- medium

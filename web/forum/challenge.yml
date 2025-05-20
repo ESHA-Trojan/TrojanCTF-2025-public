@@ -1,0 +1,30 @@
+name: Forum
+category: web
+description: |-
+  Help us infiltrate this weird hacking forum:
+
+  **Note:** Registering an account on the forum means you agree to
+  1) Be respectful of others
+  2) Not to register with real-world credentials
+  3) Not to post profanities
+  4) Not to spam
+
+  Please do not spam account registration!
+  One account is enough to solve the challenge.
+
+  Enjoy the challenge, and let others enjoy it as well!
+attribution: ''
+value: 150
+type: dynamic
+
+extra:
+  initial: 300
+  decay: 20
+  minimum: 150
+connection_info: https://forum.chall.trojanc.tf
+
+flags:
+- Trojan{1_c4N_5Cr1pT_0r_I_c4N_cl1CK}
+
+tags:
+- medium

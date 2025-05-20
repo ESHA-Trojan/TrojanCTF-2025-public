@@ -1,0 +1,23 @@
+name: Rolling my own auth
+category: misc
+description: |-
+  Everyone always warns not to roll your own auth.
+  I found this old 3 line protocol. It is so simple, there can be no bugs in it, right?
+
+  - Alice: `nc alice-chall.trojanc.tf 5000`
+  - Bob: `nc bob-chall.trojanc.tf 5000`
+attribution: ''
+value: 282
+type: dynamic
+
+extra:
+  initial: 300
+  decay: 20
+  minimum: 150
+connection_info: ''
+
+flags:
+- Trojan{Sec_pr0t0c0ls_are_3_line_pr0grams_that_pe0ple_still_m@n@ge_to_get_wr0ng}
+
+files:
+- dist/protocol.py

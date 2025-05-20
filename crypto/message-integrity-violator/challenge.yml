@@ -1,0 +1,21 @@
+name: Message Integrity Violator
+category: crypto
+description: Please find the description of the challenge in the attached pdf.
+attribution: ''
+value: 250
+type: dynamic
+
+extra:
+  initial: 500
+  decay: 10
+  minimum: 250
+connection_info: https://miv.chall.trojanc.tf/verify
+
+flags:
+- Trojan{length_extension_with_padding_success133333333333333}
+
+files:
+- dist/CTF_Challenge_Length_Extension_Description.pdf
+
+tags:
+- hard

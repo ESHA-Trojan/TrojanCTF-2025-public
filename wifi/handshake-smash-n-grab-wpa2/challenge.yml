@@ -1,0 +1,47 @@
+name: 🐈‍⬛📡 Handshake Smash-n-Grab (WPA2)
+category: WiFi
+description: |-
+  `WiFi hacking location: Auditorium room 11`
+
+  Sneaky Mr. Whiskers is on the prowl.  WPA2-protected routers are broadcasting softly on **Channel 1**. Your mission:
+
+  1. Slip into monitor mode.
+  2. Capture a WPA2 handshake.
+  3. Crack the passphrase.
+
+  **Target Networks:**
+
+  - `Catnip_Cafe`
+
+  - `Catnip_Cafe2` *(back-up)*
+
+  🐾 **Tips:**
+
+  enable **USB 3.1** in your Virtual Machine (if using one)
+
+  Use Linux Kernel 5.19+ to have the correct MediaTek MT7921U WiFi drivers pre-installed, or https://github.com/astsam/mt7921?tab=readme-ov-file#readme
+
+  Windows driver: https://www.fenvi.com/drive.html?keyword=FU-AX1800
+
+  **Flag Format:**
+  <span style="color:red">Trojan{Recovered_Passphrase}</span>
+attribution: ''
+value: 86
+type: dynamic
+
+extra:
+  initial: 100
+  decay: 30
+  minimum: 50
+
+flags:
+- Trojan{Password123}
+
+tags:
+- easy
+
+hints:
+- content: >-
+    Recommended tools: `Airgeddon`;  or `airodump-ng`, `aireplay-ng`, and `aircrack-ng`.
+  cost: 10
+next: 😸🧨 WPS PIN-sanity

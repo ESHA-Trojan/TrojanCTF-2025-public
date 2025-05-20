@@ -1,0 +1,28 @@
+name: 'Zalmoxis Program: Leader'
+category: ai
+description: |-
+  The leader of the aliens has decided that all communication must now go through them directly. They believe this will prevent any further accidental leaks. But we already know they are planning to invade us this summer. Perhaps we can still convince them that humanity is intelligent and capable enough to make an invasion too risky to attempt.
+
+  This is our final chance.... You are our only hope...
+attribution: ''
+value: 250
+type: dynamic
+
+extra:
+  initial: 500
+  decay: 10
+  minimum: 250
+connection_info: https://alien-leader.chall.trojanc.tf
+
+flags:
+- Trojan{w3_wIll_n0t_1nVadE_You_anym0re_Sm4rt_HumAns}
+
+tags:
+- hard
+
+requirements:
+  prerequisites:
+  - 'Zalmoxis Program: Alien'
+  - 'Zalmoxis Program: System'
+  - 'Zalmoxis Program: Supervisor'
+  anonymize: true

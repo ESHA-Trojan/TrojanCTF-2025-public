@@ -1,0 +1,33 @@
+name: BlockChainChain
+category: web
+description: |-
+  Seems like there is a hidden API service available. Maybe it can help us get better access to the forum?
+
+  Once again, please do not spam account registration!
+  One account is enough to solve the challenge.
+attribution: ''
+value: 299
+type: dynamic
+
+extra:
+  initial: 300
+  decay: 20
+  minimum: 150
+connection_info: https://chain.chall.trojanc.tf
+
+flags:
+- Trojan{C01n_m45TeR_t0_4Dm1N}
+
+tags:
+- medium
+
+hints:
+- content: >-
+    To get a higher level of access to the forum, we should log in as admin. I wonder
+    if a vulnerability in this new API would help with that.
+  cost: 50
+
+requirements:
+  prerequisites:
+  - Forum
+  anonymize: true

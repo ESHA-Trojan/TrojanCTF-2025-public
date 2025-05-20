@@ -1,0 +1,25 @@
+name: Time 2 Touch Grass
+category: misc
+description: |-
+  Come on, get away from that computer screen. Let your eyes rest a bit. Take a break, grab a snack or a drink or something...
+  In the meantime, Whitehats have lost their white hat somewhere in Auditorium. If you come accross it, make sure to scan the **2** NFC tags on it. There is a flag there to prove that you found it. **Please leave it at the same place!**
+
+  The scope is **everywhere** in Auditorium, reachable by open doors, or by lecture halls. You are free to enter and look around in lecture halls, but please do not open any other closed doors.
+attribution: ''
+value: 165
+type: dynamic
+
+extra:
+  initial: 300
+  decay: 20
+  minimum: 150
+
+flags:
+- Trojan{5uCcs35fuL_1n_T0uch1NG_gR455}
+
+tags:
+- medium
+
+hints:
+- content: The hat is located downstairs (floor -1), near one of the lecture halls
+  cost: 25

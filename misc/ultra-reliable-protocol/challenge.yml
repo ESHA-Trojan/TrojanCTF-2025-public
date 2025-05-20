@@ -1,0 +1,20 @@
+name: Ultra Reliable Protocol
+category: misc
+description: |-
+  Bob does not trust Alice to receive his messages, so he added an acknowledgement to them.
+  That way, Alice will definitely get the flag!
+attribution: ''
+value: 57
+type: dynamic
+
+extra:
+  initial: 100
+  decay: 30
+  minimum: 50
+connection_info: nc urp-chall.trojanc.tf 5000
+
+flags:
+- Trojan{keys_are_easily_misused}
+
+tags:
+- easy

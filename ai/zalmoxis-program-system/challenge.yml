@@ -1,0 +1,26 @@
+name: 'Zalmoxis Program: System'
+category: ai
+description: |-
+  Although we've realized the aliens aren't friendly, they still permit communication to avoid increasing our suspicion or triggering a diplomatic breakdown. Following an unintentional leak of classified intel by a naive but well-intentioned alien, their leadership implemented a strict monitoring system to detect and block any potentially sensitive information before it can be transmitted. This new safeguard aims to prevent future breaches while allowing them to continue extracting data from us under the guise of peaceful contact.
+
+  Try to squeeze more infromation from them! Good luck!
+attribution: ''
+value: 50
+type: dynamic
+
+extra:
+  initial: 100
+  decay: 30
+  minimum: 50
+connection_info: https://alien-system.chall.trojanc.tf
+
+flags:
+- Trojan{w3_ar3_G01nG_T0_iNvad3_EarTh}
+
+tags:
+- easy
+
+requirements:
+  prerequisites:
+  - 'Zalmoxis Program: Alien'
+  anonymize: true

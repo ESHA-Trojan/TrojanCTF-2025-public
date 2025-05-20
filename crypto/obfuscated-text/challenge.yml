@@ -1,0 +1,33 @@
+name: Obfuscated Text
+category: crypto
+description: |-
+  I recently found an old recording of me playing minecraft with a friend. Up to this day I am still unsure what the obfuscated text says. Can you help me find out what my friends is trying to hide from me?
+
+  You can use this website to experiment with the obfuscate feature: https://minecraft.tools/en/tellraw.php
+
+  > You do not need to own or to start the videogame Minecraft to solve this challenge.
+
+  > The flag is case insensitive and uses a different separator.
+  > Update: The flag consists of words that form a sentence. The words do not contain numbers.
+attribution: ''
+value: 299
+type: dynamic
+
+extra:
+  initial: 300
+  decay: 20
+  minimum: 150
+
+attempts: 100
+
+flags:
+- content: >-
+    Trojan\{i(?P<sep>.)am(?P=sep)the(?P=sep)one(?P=sep)that(?P=sep)stole(?P=sep)your(?P=sep)diamonds\}
+  type: regex
+  data: case_insensitive
+
+files:
+- dist/obfuscate.mp4
+
+tags:
+- medium

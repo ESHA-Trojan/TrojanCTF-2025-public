@@ -1,0 +1,33 @@
+name: GeoTag
+category: osint
+description: |-
+  I was just going **rock climbing** with a couple of my friends, we did not have a car so we went
+  with a taxi. I remember vividly that the place we stopped by was right after a really narrow
+  wood paved road road segment where only one car could pass because the rocks on both
+  sides were that close to each other. After climbing, we decided to walk a bit further east down the road to a village where we stopped for a couple beers in the local pub, gosh it was amazing,
+  I wish I would just remember the name of that pub… but unfortunately, this broken road bollard
+  is the only picture I have from that village.
+
+  Flag format: **Trojan{pub_name}** (spaces replaced by underscores)
+attribution: ''
+value: 250
+type: dynamic
+
+extra:
+  initial: 500
+  decay: 10
+  minimum: 250
+
+flags:
+- content: Trojan{hostinec_skalka}
+  type: static
+  data: case_insensitive
+- content: Trojan{skalka}
+  type: static
+  data: case_insensitive
+
+files:
+- dist/geotag.png
+
+tags:
+- hard

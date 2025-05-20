@@ -1,0 +1,21 @@
+name: Commit Merge Push Fsck
+category: web
+description: |-
+  haha check out my funny git meme guys
+
+  so relatable!
+attribution: WhiteHats
+value: 150
+type: dynamic
+
+extra:
+  initial: 300
+  decay: 20
+  minimum: 150
+connection_info: https://commit.chall.trojanc.tf
+
+flags:
+- Trojan{G1T_GuD_0r_D13_Try1nG}
+
+tags:
+- medium

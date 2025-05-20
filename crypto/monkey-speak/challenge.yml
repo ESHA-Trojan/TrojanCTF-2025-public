@@ -1,0 +1,23 @@
+name: Monkey Speak
+category: crypto
+description: |-
+  Someone at the zoo forgot to lock the monkey cage, and now the monkeys have started tearing up our flags!
+
+  Please help up bring things back to order
+attribution: ''
+value: 50
+type: dynamic
+
+extra:
+  initial: 100
+  decay: 30
+  minimum: 50
+
+flags:
+- Trojan{M0nkey_speAk_Monk3y_do_monKey_d0nT}
+
+files:
+- dist/out.txt
+
+tags:
+- easy

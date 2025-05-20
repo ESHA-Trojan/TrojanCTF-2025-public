@@ -1,0 +1,22 @@
+name: My first VM
+category: rev
+description: |-
+  Never run code on your own machine, so I made my own VM!
+  Can you crack it?
+attribution: ''
+value: 340
+type: dynamic
+
+extra:
+  initial: 500
+  decay: 10
+  minimum: 250
+
+flags:
+- Trojan{I_like_xor_you_can_swap_with_it_without_temporary_memory}
+
+files:
+- dist/vm
+
+tags:
+- hard

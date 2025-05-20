@@ -1,0 +1,23 @@
+name: The Lost City
+category: osint
+description: |-
+  Hear the Trojan song, see the energy behind it. The magic of Troy can start to unravel it's secrets.
+  Enter the Trojan horse, many have flocked to it. The faraway land of your fellow soldier will guide you, but you must fill the rest of your path with stars.
+  Only then will the truth be revealed, but hurry: all ends soon.
+attribution: ''
+value: 300
+type: dynamic
+
+extra:
+  initial: 300
+  decay: 20
+  minimum: 150
+
+flags:
+- Trojan{L05t_C1Ty_n0W_f0uNd}
+
+files:
+- dist/challenge.mp3
+
+tags:
+- medium

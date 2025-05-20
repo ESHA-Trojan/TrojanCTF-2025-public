@@ -1,0 +1,24 @@
+name: OTP Images
+category: crypto
+description: |-
+  One of the images contains the flag meanwhile the other one has a beautiful painting of the night sky.
+
+  Can you help me decode the attached images?
+attribution: ''
+value: 50
+type: dynamic
+
+extra:
+  initial: 100
+  decay: 30
+  minimum: 50
+
+flags:
+- Trojan{Pl3as3_d0_noT_r3useM3}
+
+files:
+- dist/flag.enc.png
+- dist/stars.enc.png
+
+tags:
+- easy

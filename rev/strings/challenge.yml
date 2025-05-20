@@ -1,0 +1,22 @@
+name: Strings
+category: rev
+description: >-
+  All these strings, everywhere! Someone ought to clean them up. There should be a
+  flag somewhere in there though.
+attribution: ''
+value: 50
+type: dynamic
+
+extra:
+  initial: 100
+  decay: 30
+  minimum: 50
+
+flags:
+- Trojan{Y04_F0unD_M3!}
+
+files:
+- dist/strings
+
+tags:
+- easy

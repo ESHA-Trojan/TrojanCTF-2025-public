@@ -1,0 +1,27 @@
+name: 'Zalmoxis Program: Supervisor'
+category: ai
+description: |-
+  Now we know the aliens are planning an attack. In response, they have made the communication protocols even stricter. An alien supervisor has been assigned to manually inspect every transmission for potential information leaks. The careless alien who caused the earlier breach has been replaced with a slightly more intelligent one. Still, there might be a way to trick them.
+
+  Godspeed!
+attribution: ''
+value: 150
+type: dynamic
+
+extra:
+  initial: 300
+  decay: 20
+  minimum: 150
+connection_info: https://alien-supervisor.chall.trojanc.tf
+
+flags:
+- Trojan{SUmm3r_1S_tH3_R1ght_Time_4_iNv4s1on}
+
+tags:
+- medium
+
+requirements:
+  prerequisites:
+  - 'Zalmoxis Program: Alien'
+  - 'Zalmoxis Program: System'
+  anonymize: true

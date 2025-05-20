@@ -1,0 +1,25 @@
+name: To Caesar, or not to Caesar
+category: crypto
+description: |-
+  Can you crack the code?
+
+  The flag format for this challenge is different, it is all lowercase and no curly braces. Add the curly braces before submitting.
+attribution: ''
+value: 100
+type: dynamic
+
+extra:
+  initial: 100
+  decay: 30
+  minimum: 50
+
+flags:
+- content: Trojan{bigramfrequencyanalysisftw}
+  type: static
+  data: case_insensitive
+
+files:
+- dist/ciphertext.txt
+
+tags:
+- easy

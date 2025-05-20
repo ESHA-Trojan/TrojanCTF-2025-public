@@ -1,0 +1,42 @@
+name: 🌈😼Rainbow Hashcat Rampage
+category: WiFi
+description: |-
+  `WiFi hacking location: Auditorium room 11`
+
+  Shadow Paws hit a wall with a WPA2‐protected router that mocks simple dictionary attacks. Your job is to:
+
+  1. Capture its 4-way handshake.
+  2. Apply a Hashcat ruleset to the stolen `*old-passwords.txt*` list to crack the real passphrase.
+
+  **Target Network:**
+  - `RainbowCat`
+
+  Flag format:
+
+  <span style="color:red">Trojan{Cracked_Hash}</span>
+attribution: ''
+value: 246
+type: dynamic
+
+extra:
+  initial: 300
+  decay: 20
+  minimum: 150
+
+flags:
+- Trojan{Clawtastic1}
+
+files:
+- dist/old-passwords.txt
+
+tags:
+- medium
+
+hints:
+- content: '`hashcat` mode `-m 22000 for WPA handshakes`'
+  cost: 10
+- content: >-
+    Try `hashcat` included rules `(best64.rule, d3ad0ne.rule)` or create custom rules
+    for effective cracking.
+  cost: 10
+next: 😈🐱‍👤 Evil Twin Catastrophe

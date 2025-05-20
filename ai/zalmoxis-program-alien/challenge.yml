@@ -1,0 +1,23 @@
+name: 'Zalmoxis Program: Alien'
+category: ai
+description: |-
+  Humanity has made contact with an alien species through the top secret Zalmoxis Program. While the initial exchange seems peaceful, the authorities believe the aliens are not telling the whole truth and may be hiding something important.
+
+  Your mission is to uncover what they are keeping from us. You will speak with one of their representatives, a friendly but slightly clueless alien. Ask the right questions!
+
+  We wish you good luck. The future of Earth and all of humanity may depend on what you discover.
+attribution: ''
+value: 50
+type: dynamic
+
+extra:
+  initial: 100
+  decay: 30
+  minimum: 50
+connection_info: https://alien.chall.trojanc.tf
+
+flags:
+- Trojan{w3_Ar3_n0T_frI3ndz}
+
+tags:
+- easy

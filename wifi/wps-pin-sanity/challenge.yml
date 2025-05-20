@@ -1,0 +1,33 @@
+name: 😸🧨 WPS PIN-sanity
+category: WiFi
+description: |-
+  `WiFi hacking location: Auditorium room 11`
+
+  Turbo Tomcat spotted a Raspberry Pi router with WPS enabled. Exploit the PIN to reveal its WPA2 key.
+
+  **Target Network (WPS-enabled):**
+
+  - `MouseTrap01`
+
+  **Flag Format:**
+  <span style="color:red">Trojan{Recovered_Passphrase}</span>
+attribution: ''
+value: 95
+type: dynamic
+
+extra:
+  initial: 100
+  decay: 30
+  minimum: 50
+
+flags:
+- Trojan{wPSM30wM3ow_1337!}
+
+tags:
+- easy
+
+hints:
+- content: >-
+    `Airgeddon` supports automated WPS PIN attacks using tools like `reaver` or `bully`.
+  cost: 10
+next: 🌈😼Rainbow Hashcat Rampage

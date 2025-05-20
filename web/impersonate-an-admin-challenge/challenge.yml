@@ -1,0 +1,28 @@
+name: Impersonate an Admin Challenge
+category: web
+description: |-
+  **Scenario:**
+  You're testing a company portal that uses simple role-based access:
+  - All users get 'user' role by default
+  - Admins can access special functionality
+
+  **Objective:**
+  Become an admin and retrieve the flag from the admin panel.
+
+  **Flag Format:**
+  <span style="color:red">Trojan{Recovered_Passphrase}</span>
+attribution: ''
+value: 50
+type: dynamic
+
+extra:
+  initial: 100
+  decay: 30
+  minimum: 50
+connection_info: https://imp.chall.trojanc.tf
+
+flags:
+- Trojan{Who_is_the_admin_now_58928924892892}
+
+tags:
+- easy

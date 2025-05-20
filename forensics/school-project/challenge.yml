@@ -1,0 +1,26 @@
+name: School project
+category: forensics
+description: |-
+  It was a cloudy Sunday morning, and I was enjoying the soothing sounds of nature with a cold breeze hitting my window. After making some coffee, I sat at my PC and opened Stack Overflow, as I usually do. The first post I saw was about a code issue related to Bubble Sort. The code appeared flawless, but the user insisted that the problem was with VSCode, claiming the error was due to an unsupported version.
+
+  The user seemed frustrated and offered a large bounty, so I decided to help. We continued the conversation in private messages. He mentioned a school project deadline for the next day and needed an urgent solution. He sent me the entire VSCode project, and I opened the .sln file to see if I could replicate the error. However, everything worked fine on my end, and I told him so.
+
+  He didn't respond, and shortly after, the post was deleted. I felt scammed but moved on with my day. A week later, I noticed unusual activity on my machine. I have a suspicion it’s connected to that Bubble Sort project. Can you help?
+attribution: ''
+value: 150
+type: dynamic
+
+extra:
+  initial: 300
+  decay: 20
+  minimum: 150
+connection_info: 'ZIP password: Trojan2025'
+
+flags:
+- Trojan{sln_4nd_p0w3r5h3ll573g0...Wh47_4_n1c3_w4y_70_b4ckd00r_y0u}
+
+files:
+- dist/bubblesort.zip
+
+tags:
+- medium

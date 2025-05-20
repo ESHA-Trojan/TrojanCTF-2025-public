@@ -1,0 +1,22 @@
+name: TroyCraft
+category: osint
+description: >-
+  You got send an invite to the TroyCraft discord server. Investigate it and try to
+  find out what the password is. Provide the password in the format Trojan{password}.
+attribution: ''
+value: 150
+type: dynamic
+
+extra:
+  initial: 300
+  decay: 20
+  minimum: 150
+connection_info: https://discord.gg/gVgtkDSE7Z
+
+flags:
+- content: Trojan{graz_dardania_alexandros_aeluros}
+  type: static
+  data: case_insensitive
+
+tags:
+- medium

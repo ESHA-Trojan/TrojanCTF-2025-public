@@ -1,0 +1,23 @@
+name: Stripped
+category: rev
+description: >-
+  The binary hums with the raw, mechanical energy of a song stripped to its bare components.
+  It waits for input, but not just any input—words twisted by a process that starts
+  counting where it shouldn’t. Reverse its dissonant logic to uncover what it hides.
+attribution: ''
+value: 204
+type: dynamic
+
+extra:
+  initial: 300
+  decay: 20
+  minimum: 150
+
+flags:
+- Trojan{TAk3_m7_hAnD_c0m3_baCK_t0_th3_Land}
+
+files:
+- dist/stripped
+
+tags:
+- medium

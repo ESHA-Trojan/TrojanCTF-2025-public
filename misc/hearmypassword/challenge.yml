@@ -1,0 +1,32 @@
+name: HearMyPassword
+category: misc
+description: |-
+  You recently came across the renowned streamer Claurentiu. While watching his stream, you noticed something interesting: his keyboard and mouse inputs are tracked in real time, and thanks to his cranked-up mic gain, every keypress sounds like a mini drum solo.
+
+  When he is typing his password to access his streaming account he blurs the screen and disables the addon that shows the key presses, obviously. But you can still hear the key presses and this may leak his password. You told Claurentiu about this possible issue.
+
+  Now he is curios if you can actually find his password based on his stream audio. Can you figure out his (now old) password just from the sounds?
+
+  Use the files below to find the Claurentiu's password. The `password.zip` archive contains 3 different recordings of the same password.
+
+  > The flag is case insensitive.
+attribution: ''
+value: 340
+type: dynamic
+
+extra:
+  initial: 500
+  decay: 10
+  minimum: 250
+
+flags:
+- content: Trojan{the_keys_on_my_keyboard_make_funny_noises_they_go_brr}
+  type: static
+  data: case_insensitive
+
+files:
+- dist/data.zip
+- dist/password.zip
+
+tags:
+- hard

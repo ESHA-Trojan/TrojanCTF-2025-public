@@ -1,0 +1,21 @@
+name: Phantom Authorization
+category: web
+description: >-
+  E.S.H.A. Trojan has been working on switching the framework they use for their website.
+  Whispers suggest their new framework's "secure" route protection isn’t what it seems—an
+  oversight in how gatekeepers handle repetitive whispers.
+attribution: ''
+value: 227
+type: dynamic
+
+extra:
+  initial: 300
+  decay: 20
+  minimum: 150
+connection_info: https://phantom.chall.trojanc.tf
+
+flags:
+- Trojan{S0_mUch_F0R_AUth3nt1cat10n_29927}
+
+tags:
+- medium

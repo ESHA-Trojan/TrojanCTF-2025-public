@@ -1,0 +1,24 @@
+name: Knock knock
+category: forensics
+description: >-
+  Following suspicious activity from one of our company's computers, we recorded its
+  network traffic. Analyzing the resulting file, we noticed that it is communicating
+  with a specific address, but the packets it sends are empty. Our suspicion is that
+  it is trying to secretly send data to this address. Can you confirm this?
+attribution: ''
+value: 50
+type: dynamic
+
+extra:
+  initial: 100
+  decay: 30
+  minimum: 50
+
+flags:
+- Trojan{h1d1ng_1nf0_1n_p027_numb325}
+
+files:
+- dist/knock-knock.pcap
+
+tags:
+- easy

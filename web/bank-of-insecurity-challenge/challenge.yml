@@ -1,0 +1,25 @@
+name: Bank of Insecurity Challenge
+category: web
+description: |-
+  **Scenario**
+  You're assessing a banking portal where users log in with a username and password. The backend uses a classic SQL query to verify credentials — but without any input sanitization.
+
+  **Objective**
+  Log in and retrieve the flag.
+
+  **Flag Format:**
+  <span style="color:red">Trojan{Recovered_Passphrase}</span>
+attribution: ''
+value: 50
+type: dynamic_iac
+
+extra:
+  initial: 100
+  decay: 30
+  minimum: 50
+
+flags:
+- Trojan{a_one_of_a_kind_sql_injecter09876898765}
+
+tags:
+- easy

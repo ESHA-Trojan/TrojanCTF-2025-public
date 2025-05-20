@@ -1,0 +1,20 @@
+name: Persistent popups
+category: forensics
+description: |-
+  Mikey noticed out of the sudden that, whenever he reboots his PC, two CMD windows popup and close instantly. He informed me that this issue seems kind of persistent. I got an image from his machine to try and solve the mistery behind the CMD windows. Wanna help?
+
+  Download the challenge file from: https://drive.google.com/file/d/18aujvkI_3iW4WFUX6ftZdMKUVO2H_PyZ/view?usp=drive_link
+attribution: ''
+value: 498
+type: dynamic
+
+extra:
+  initial: 500
+  decay: 10
+  minimum: 250
+
+flags:
+- Trojan{3mb3dd1ng_k3yl0gg325_t0_r3gf1l35}
+
+tags:
+- hard
