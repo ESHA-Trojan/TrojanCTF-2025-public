@@ -1,0 +1,19 @@
+CTF Challenge Description: "Push the Right Buttons"
+
+Category: Wi-Fi Hacking
+
+Points: 200
+
+Difficulty: Medium
+
+Description:
+
+Our security team set up an access point called CTF_WPS_AP. They've left WPS enabled, believing it to be secure with their "complex" PIN. Your job is to prove them wrong. Crack the WPS PIN and retrieve the WPA2 pre-shared key (PSK) to gain access.
+
+SSID: CTF_WPS_APBSSID: Provided on-site
+
+Goal:
+
+Provide the WPA2 PSK of the network to solve this challenge.
+
+Hint: Sometimes default settings aren't as secure as they seem.

