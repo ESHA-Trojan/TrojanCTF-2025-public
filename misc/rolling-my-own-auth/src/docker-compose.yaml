@@ -1,0 +1,17 @@
+services:
+  alice:
+    build: .
+    ports:
+      - 5000:5000
+    privileged: true
+    environment:
+      - JAIL_ENV_ROLE=Alice
+      - JAIL_ENV_FLAG="Trojan{Sec_pr0t0c0ls_are_3_line_pr0grams_that_pe0ple_still_manage_to_get_wr0ng}"
+  bob:
+    build: .
+    ports:
+      - 5001:5000
+    privileged: true
+    environment:
+      - JAIL_ENV_ROLE=Bob
+      - JAIL_ENV_FLAG="Trojan{Sec_pr0t0c0ls_are_3_line_pr0grams_that_pe0ple_still_manage_to_get_wr0ng}"

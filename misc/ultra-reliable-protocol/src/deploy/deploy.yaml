@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: typed-proto
+spec:
+  finalizers:
+    - kubernetes
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: typed-proto-service
+  namespace: typed-proto
+spec:
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000
+  selector:
+    app: typed-proto-app
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: typed-proto-deployment
+  namespace: typed-proto
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: typed-proto-app
+  template:
+    metadata:
+      labels:
+        app: typed-proto-app
+    spec:
+      enableServiceLinks: false
+      automountServiceAccountToken: false
+      containers:
+        - name: typed-proto
+          image: trojanctf2025challenges.azurecr.io/misc/typed-proto
+          ports:
+            - containerPort: 5000
+          securityContext:
+            privileged: true

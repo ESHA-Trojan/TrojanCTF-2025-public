@@ -1,0 +1,10 @@
+Name: Ack
+Description:
+    Alice does not trust Bob to receive her messages, so she added an acknowledgement to them.
+    That way, Bob will definitely get the flag!
+
+files:
+    typed_proto.go
+
+difficulty: easy
+flag: Trojan{keys_are_easily_misused}

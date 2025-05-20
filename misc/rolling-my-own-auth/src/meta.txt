@@ -1,0 +1,14 @@
+Name: Rolling my own Auth
+Description:
+    Everyone always warns not to roll your own auth. 
+    I found this old 3 line protocol. It is so simple, there can be no bugs in it, right?
+
+    A -> B: {N_a,A}Pk_b
+    B -> A: {N_a, N_b}Pk_A
+    A -> B: {N_b}Pk_b
+
+files:
+    protocol.py
+
+difficulty: medium
+flag: Trojan{Sec_pr0t0c0ls_are_3_line_pr0grams_that_pe0ple_still_m@n@ge_to_get_wr0ng}

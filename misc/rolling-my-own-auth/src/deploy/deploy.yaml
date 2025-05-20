@@ -1,0 +1,103 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: broken-auth
+spec:
+  finalizers:
+    - kubernetes
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: broken-auth-service-alice
+  namespace: broken-auth
+spec:
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000
+  selector:
+    app: broken-auth-app-alice
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: broken-auth-deployment-alice
+  namespace: broken-auth
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: broken-auth-app-alice
+  template:
+    metadata:
+      labels:
+        app: broken-auth-app-alice
+    spec:
+      enableServiceLinks: false
+      automountServiceAccountToken: false
+      containers:
+        - name: broken-auth-alice
+          image: trojanctf2025challenges.azurecr.io/misc/broken-auth
+          ports:
+            - containerPort: 5000
+          securityContext:
+            privileged: true
+          env:
+            - name: "JAIL_TIME"
+              value: "60"
+            - name: "JAIL_MEM"
+              value: "40M"
+            - name: "JAIL_ENV_ROLE"
+              value: "Alice"
+            - name: "JAIL_ENV_FLAG"
+              value: "Trojan{Sec_pr0t0c0ls_are_3_line_pr0grams_that_pe0ple_still_m@n@ge_to_get_wr0ng}"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: broken-auth-service-bob
+  namespace: broken-auth
+spec:
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000
+  selector:
+    app: broken-auth-app-bob
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: broken-auth-deployment-bob
+  namespace: broken-auth
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: broken-auth-app-bob
+  template:
+    metadata:
+      labels:
+        app: broken-auth-app-bob
+    spec:
+      enableServiceLinks: false
+      automountServiceAccountToken: false
+      containers:
+        - name: broken-auth-bob
+          image: trojanctf2025challenges.azurecr.io/misc/broken-auth
+          ports:
+            - containerPort: 5000
+          securityContext:
+            privileged: true
+          env:
+            - name: "JAIL_TIME"
+              value: "60"
+            - name: "JAIL_MEM"
+              value: "40M"
+            - name: "JAIL_ENV_ROLE"
+              value: "Bob"
+            - name: "JAIL_ENV_FLAG"
+              value: "Trojan{Sec_pr0t0c0ls_are_3_line_pr0grams_that_pe0ple_still_m@n@ge_to_get_wr0ng}"
