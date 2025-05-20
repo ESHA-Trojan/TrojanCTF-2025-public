@@ -1,0 +1,12 @@
+Name: Pretty High Prices
+Description:
+    Honestly, these food prices are outrageous. How do they expect anyone to be able to pay $50 for two pizzas???
+    There's no way this business will be feasible on today's economy. I tried complaining to the company through their contact form, but it seems to be broken.
+    Maybe I can somehow leave them a message if I get access to a server shell. I guess it's time to put my CTF skills into practice!
+
+files:
+    pretty-high-prices.zip
+        all web files, incl Dockerfile (template flag!!!)
+
+difficulty: hard
+flag: Trojan{f1Ve_mIni_buRg3r5-equ@lS-4_mixed-piZzZas}

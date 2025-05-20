@@ -1,0 +1,60 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: role-based-access
+spec:
+  finalizers:
+    - kubernetes
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: role-based-access-service
+  namespace: role-based-access
+spec:
+  ports:
+    - name: http
+      protocol: TCP
+      port: 30023
+      targetPort: http
+  selector:
+    app: role-based-access-app
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: role-based-access-deployment
+  namespace: role-based-access
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: role-based-access-app
+  template:
+    metadata:
+      labels:
+        app: role-based-access-app
+    spec:
+      enableServiceLinks: false
+      automountServiceAccountToken: false
+      containers:
+        - name: role-based-access
+          image: trojanctf2025challenges.azurecr.io/pwn/role-based-access
+          ports:
+            - name: http
+              containerPort: 5000
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: rbac-ingress-route
+  namespace: role-based-access
+spec:
+  entryPoints:
+    - websecure
+  routes:
+  - match: Host(`imp.chall.trojanc.tf`) && PathPrefix(`/`)
+    kind: Rule
+    services:
+    - name: role-based-access-service
+      port: http

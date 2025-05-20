@@ -1,0 +1,6 @@
+
+services:
+  chal3-whitehats:
+    build: .
+    ports:
+      - 8000:80

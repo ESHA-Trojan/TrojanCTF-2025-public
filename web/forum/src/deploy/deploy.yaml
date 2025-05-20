@@ -1,0 +1,169 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: forum-track
+spec:
+  finalizers:
+    - kubernetes
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: forum-track-server-service
+  namespace: forum-track
+spec:
+  ports:
+    - name: http-server
+      protocol: TCP
+      port: 4000
+      targetPort: http-server
+  selector:
+    app: forum-track-app-server
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: forum-track-deployment-server
+  namespace: forum-track
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: forum-track-app-server
+  template:
+    metadata:
+      labels:
+        app: forum-track-app-server
+    spec:
+      automountServiceAccountToken: false
+      containers:
+        - name: forum-track-server
+          image: trojanctf2025challenges.azurecr.io/web/forum-track-server
+          ports:
+            - name: http-server
+              containerPort: 4000
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: forum-track-server-ingressroute
+  namespace: forum-track
+spec:
+  entryPoints:
+    - websecure
+  routes:
+  - match: Host(`forum.chall.trojanc.tf`) && PathPrefix(`/api/`)
+    kind: Rule
+    services:
+    - name: forum-track-server-service
+      port: http-server
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: forum-track-client-service
+  namespace: forum-track
+spec:
+  ports:
+    - name: http-client
+      protocol: TCP
+      port: 3000
+      targetPort: http-client
+  selector:
+    app: forum-track-app-client
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: forum-track-deployment-client
+  namespace: forum-track
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: forum-track-app-client
+  template:
+    metadata:
+      labels:
+        app: forum-track-app-client
+    spec:
+      automountServiceAccountToken: false
+      containers:
+        - name: forum-track-client
+          image: trojanctf2025challenges.azurecr.io/web/forum-track-client
+          ports:
+            - name: http-client
+              containerPort: 3000
+          env:
+            - name: "REACT_APP_SERVER"
+              value: "https://forum.chall.trojanc.tf"
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: forum-track-client-ingressroute
+  namespace: forum-track
+spec:
+  entryPoints:
+    - websecure
+  routes:
+  - match: Host(`forum.chall.trojanc.tf`) && PathPrefix(`/`)
+    kind: Rule
+    services:
+    - name: forum-track-client-service
+      port: http-client
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: forum-track-blockchain-service
+  namespace: forum-track
+spec:
+  ports:
+    - name: http-blockchain
+      protocol: TCP
+      port: 30026
+      targetPort: http-blockchain
+  selector:
+    app: forum-track-app-blockchain
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: forum-track-deployment-blockchain
+  namespace: forum-track
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: forum-track-app-blockchain
+  template:
+    metadata:
+      labels:
+        app: forum-track-app-blockchain
+    spec:
+      automountServiceAccountToken: false
+      containers:
+        - name: forum-track-blockchain
+          image: trojanctf2025challenges.azurecr.io/web/forum-track-blockchain
+          ports:
+            - name: http-blockchain
+              containerPort: 5000
+          env:
+            - name: "FLASK_SERVER"
+              value: "https://forum.chall.trojanc.tf"
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: forum-track-blockchain-ingressroute
+  namespace: forum-track
+spec:
+  entryPoints:
+    - websecure
+  routes:
+  - match: Host(`chain.chall.trojanc.tf`) && PathPrefix(`/`)
+    kind: Rule
+    services:
+    - name: forum-track-blockchain-service
+      port: http-blockchain

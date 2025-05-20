@@ -1,0 +1,47 @@
+services:
+  blockchain:
+    build: ./blockchain
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./blockchain:/blockchain
+    networks:
+      - website
+    working_dir: /blockchain
+    environment:
+      - FLASK_SERVER=http://server:4000
+
+  client:
+    build: ./client
+    volumes:
+      - ./client:/client
+    networks:
+      - website
+    working_dir: /client
+    command: npm start
+    environment:
+      - "REACT_APP_SERVER=/."
+
+  server:
+    build: ./server
+    volumes:
+      - ./server:/server
+    networks:
+      - website
+    working_dir: /server
+    command: npm start
+
+  nginx:
+    image: nginx:alpine
+    restart: unless-stopped
+    ports:
+      - 3000:80
+    networks:
+      - website
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+
+
+networks:
+  website:
+    driver: bridge

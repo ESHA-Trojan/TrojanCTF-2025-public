@@ -1,0 +1,27 @@
+setup:
+docker build -t php-ctf .
+docker run -p 8000:80 php-ctf
+
+goal:
+- Read '/home/ctfuser/flag.txt', which can only be read using sudo (so RCE is required)
+- Use php:// filters to get RCE
+See: https://www.synacktiv.com/publications/php-filters-chain-what-is-it-and-how-to-use-it
+     https://github.com/synacktiv/php_filter_chain_generator
+
+steps:
+1. locate util.php and observe how it tries to read instructions.pdf (indication that challenge is related to include function)
+2. (ab)use the PHP extract function to overwrite the 'stat_filename' variable
+See: https://www.php.net/manual/en/function.extract.php
+3. Confirm you're able to read '/etc/passwd' via: '/util.php?key=static_fileName&value=/etc/passwd'
+4. execute arbitrary code by either:
+- php filters
+- (unintented) Get userinput from running processes /proc, /self/proc/, etc; to execute PHP via include() (/var/log/apache2 -> stderr&stdout)
+5. Dockerfile shows you can run 'sudo -u ctfuser cat /home/ctfuser/flag.txt' (-u specifies the user)
+
+POC:
+www-data@a328f8490837:/home/ctfuser$ sudo -l 
+Matching Defaults entries for www-data on a328f8490837:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin, use_pty
+
+User www-data may run the following commands on a328f8490837:
+    (ctfuser) NOPASSWD: /bin/cat /home/ctfuser/flag.txt

@@ -1,0 +1,60 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: nextjs-cve
+spec:
+  finalizers:
+    - kubernetes
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nextjs-cve-service
+  namespace: nextjs-cve
+spec:
+  ports:
+    - name: http
+      protocol: TCP
+      port: 30020
+      targetPort: http
+  selector:
+    app: nextjs-cve-app
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nextjs-cve-deployment
+  namespace: nextjs-cve
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nextjs-cve-app
+  template:
+    metadata:
+      labels:
+        app: nextjs-cve-app
+    spec:
+      enableServiceLinks: false
+      automountServiceAccountToken: false
+      containers:
+        - name: nextjs-cve
+          image: trojanctf2025challenges.azurecr.io/web/nextjs-cve
+          ports:
+            - name: http
+              containerPort: 3000
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: nextjs-cve-ingressroute
+  namespace: nextjs-cve
+spec:
+  entryPoints:
+    - websecure
+  routes:
+  - match: Host(`phantom.chall.trojanc.tf`) && PathPrefix(`/`)
+    kind: Rule
+    services:
+    - name: nextjs-cve-service
+      port: http

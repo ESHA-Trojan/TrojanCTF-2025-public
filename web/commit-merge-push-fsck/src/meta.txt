@@ -1,0 +1,8 @@
+Name: Commit Merge Push Fsck
+Description:
+    haha check out my funny git meme guys
+
+    so relatable!
+
+flag: Trojan{G1T_GuD_0r_D13_Try1nG}
+difficulty: medium

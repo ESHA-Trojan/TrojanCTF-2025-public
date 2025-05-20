@@ -1,0 +1,10 @@
+Name: good game
+Description:
+    So many good games available! So much Assasin Creed! If only I could search through them!
+
+Difficulty: medium
+files:
+    good-game.zip
+        source (main.py, Dockerfile, assets, static) zipped
+
+Flag: Trojan{HasHt@g-PokE-lit3raly-l0caVore-b3ard-m@rF@-kog1-bruH-ar7isan-suCCulenTs}

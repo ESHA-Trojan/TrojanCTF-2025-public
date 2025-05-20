@@ -1,0 +1,22 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js",
+    "prod": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@novu/node": "^0.11.0",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "nodemon": "^2.0.22",
+    "obscenity": "^0.4.3",
+    "react-router-dom": "^7.3.0"
+  },
+  "description": ""
+}

@@ -1,0 +1,5 @@
+name: chal1-whitehats
+runtime:
+  name: go
+  options:
+    binary: ./main

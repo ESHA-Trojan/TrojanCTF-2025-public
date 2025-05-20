@@ -1,0 +1,14 @@
+###################################
+#   REMOVE THIS FILE FOR THE CTF  #
+###################################
+Goal:
+Find the flag in the git commit history
+
+Setup:
+docker build -t chal3-ctf .
+docker run -d -p 8080:80 chal3-ctf
+
+guide:
+1. find the /.git directory
+2. extract that git with a tool like git-dumper (https://github.com/arthaud/git-dumper)
+3. use git commands to find flag (git log -S)

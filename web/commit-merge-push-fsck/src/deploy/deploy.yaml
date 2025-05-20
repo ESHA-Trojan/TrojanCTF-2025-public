@@ -1,0 +1,60 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: chal3-whitehats
+spec:
+  finalizers:
+    - kubernetes
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: chal3-whitehats-service
+  namespace: chal3-whitehats
+spec:
+  ports:
+    - name: http
+      protocol: TCP
+      port: 30018
+      targetPort: http
+  selector:
+    app: chal3-whitehats-app
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chal3-whitehats-deployment
+  namespace: chal3-whitehats
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chal3-whitehats-app
+  template:
+    metadata:
+      labels:
+        app: chal3-whitehats-app
+    spec:
+      enableServiceLinks: false
+      automountServiceAccountToken: false
+      containers:
+        - name: chal3-whitehats
+          image: trojanctf2025challenges.azurecr.io/web/chal3-whitehats
+          ports:
+            - name: http
+              containerPort: 80
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: chal3-whitehats-ingressroute
+  namespace: chal3-whitehats
+spec:
+  entryPoints:
+    - websecure
+  routes:
+  - match: Host(`commit.chall.trojanc.tf`) && PathPrefix(`/`)
+    kind: Rule
+    services:
+    - name: chal3-whitehats-service
+      port: http

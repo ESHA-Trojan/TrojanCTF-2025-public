@@ -1,0 +1,10 @@
+0000000000000000000000000000000000000000 b69bd3f8286f7b908ce3dbefa3a95622cfeefa1c foobar <foo@bar.nl> 1742823346 -0400	commit (initial): init commit
+b69bd3f8286f7b908ce3dbefa3a95622cfeefa1c f4e4fc88f982807b122187b6305378ceb235ad02 foobar <foo@bar.nl> 1742823980 -0400	commit: it a commit, innit?
+f4e4fc88f982807b122187b6305378ceb235ad02 75049995645a7614653f3a73c63a747e95127583 foobar <foo@bar.nl> 1742824047 -0400	commit: U forgot the .env mate
+75049995645a7614653f3a73c63a747e95127583 e4d1d12aa84d4e87854a3b6e4afb1492fb483b78 foobar <foo@bar.nl> 1742824205 -0400	commit: niv mizzy, the wizzy lizzy (MTG)
+e4d1d12aa84d4e87854a3b6e4afb1492fb483b78 d91fd1c7b96aea75f799272d7e6056a89ee06058 foobar <foo@bar.nl> 1742824316 -0400	commit: Jerry from finance wanted me to push this (again...)
+d91fd1c7b96aea75f799272d7e6056a89ee06058 ec11846e4ca1c7a5ff2af6e914ac20f98c7b1ed6 foobar <foo@bar.nl> 1742824616 -0400	commit: Dev push 1.2
+ec11846e4ca1c7a5ff2af6e914ac20f98c7b1ed6 e2a8ed2e4a820bdd8988bba980292442137c2f10 foobar <foo@bar.nl> 1742824655 -0400	commit: fixed issue
+e2a8ed2e4a820bdd8988bba980292442137c2f10 a260b7813c1b6757f25157b82cece81e10ae7ec9 foobar <foo@bar.nl> 1742824731 -0400	commit: this was the innit commit, innit?
+a260b7813c1b6757f25157b82cece81e10ae7ec9 261f0d0b0be1c64f0da90bc33ed1a00396b2c903 foobar <foo@bar.nl> 1742824934 -0400	commit: hint hint
+261f0d0b0be1c64f0da90bc33ed1a00396b2c903 f42571fd143b5866e31ab468f4e1d5c0db8df83e pet.teun.03@gmail.com <pet.teun.03@gmail.com> 1746978183 +0200	rebase (finish): refs/heads/master onto d91fd1c7b96aea75f799272d7e6056a89ee06058
