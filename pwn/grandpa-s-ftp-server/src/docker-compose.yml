@@ -1,0 +1,6 @@
+
+services:
+  grandpa-ftp-server:
+    build: .
+    ports:
+      - 2121:2121

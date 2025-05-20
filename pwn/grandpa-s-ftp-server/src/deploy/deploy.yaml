@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: grandpa-ftp-server
+spec:
+  finalizers:
+    - kubernetes
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: grandpa-ftp-server-service
+  namespace: grandpa-ftp-server
+spec:
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 21
+      targetPort: 2121
+  selector:
+    app: grandpa-ftp-server-app
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grandpa-ftp-server-deployment
+  namespace: grandpa-ftp-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: grandpa-ftp-server-app
+  template:
+    metadata:
+      labels:
+        app: grandpa-ftp-server-app
+    spec:
+      enableServiceLinks: false
+      automountServiceAccountToken: false
+      containers:
+        - name: grandpa-ftp-server
+          image: trojanctf2025challenges.azurecr.io/pwn/grandpa-ftp-server
+          ports:
+            - containerPort: 2121
