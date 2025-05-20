@@ -1,0 +1,2 @@
+Flag: "Trojan{I_like_xor_you_can_swap_with_it_without_temporary_memory}";  
+run as: ./vm Trojan{I_like_xor_you_can_swap_with_it_without_temporary_memory}

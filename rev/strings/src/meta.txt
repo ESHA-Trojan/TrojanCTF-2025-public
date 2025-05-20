@@ -1,0 +1,3 @@
+Strings
+
+All these strings, everywhere! Someone ought to clean them up. There should be a flag somewhere in there though.

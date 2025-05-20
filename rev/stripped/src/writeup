@@ -1,0 +1,2 @@
+Reverse engineering a stripped binary. Using the entry point, the main function can be found.
+From there it is a relatively normal reverse engineering challenge with a transformation function on the users input.
