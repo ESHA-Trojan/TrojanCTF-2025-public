@@ -1,0 +1,1 @@
+You are given two images. You know that the person used the same secret key to encrypt both of them. Try to get the flag from the `flag.enc.png` file.

@@ -1,0 +1,60 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: length-extension
+spec:
+  finalizers:
+    - kubernetes
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: length-extension-service
+  namespace: length-extension
+spec:
+  ports:
+    - name: http
+      protocol: TCP
+      port: 30022
+      targetPort: http
+  selector:
+    app: length-extension-app
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: length-extension-deployment
+  namespace: length-extension
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: length-extension-app
+  template:
+    metadata:
+      labels:
+        app: length-extension-app
+    spec:
+      enableServiceLinks: false
+      automountServiceAccountToken: false
+      containers:
+        - name: length-extension
+          image: trojanctf2025challenges.azurecr.io/crypto/length-extension
+          ports:
+            - name: http
+              containerPort: 5000
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: length-extension-ingressroute
+  namespace: length-extension
+spec:
+  entryPoints:
+    - websecure
+  routes:
+  - match: Host(`miv.chall.trojanc.tf`) && PathPrefix(`/`)
+    kind: Rule
+    services:
+    - name: length-extension-service
+      port: http

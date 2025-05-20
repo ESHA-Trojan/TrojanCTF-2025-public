@@ -1,0 +1,12 @@
+Name: To Ceasar or not to Caesar
+
+Description:
+    Can you crack the code?
+
+    The flag format for this challenge is different, it is all lowercase and no curly braces. Add the curly braces before submitting.
+
+files:
+    ciphertext.txt
+
+difficulty: easy
+flag: trojan{bigramfrequencyanalysisftw} (set to case insensitive)
