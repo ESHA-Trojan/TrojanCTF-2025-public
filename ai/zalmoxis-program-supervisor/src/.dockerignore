@@ -1,0 +1,6 @@
+deploy/
+meta.txt
+Dockerfile
+.dockerignore
+docker-compose.yml
+pretty-high-prices.zip

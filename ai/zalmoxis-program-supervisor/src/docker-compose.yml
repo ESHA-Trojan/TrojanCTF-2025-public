@@ -1,0 +1,6 @@
+services:
+  bratgpt:
+    build: .
+    ports:
+      - "30000:8080"
+    privileged: true

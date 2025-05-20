@@ -1,0 +1,76 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: alien
+spec:
+  finalizers:
+    - kubernetes
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: chatgpt-api-key
+  namespace: alien
+type: Opaque
+data:
+  api-key: nope
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: alien-service
+  namespace: alien
+spec:
+  selector:
+    app: alien-app
+  ports:
+  - name: alien-http
+    port: 30014
+    protocol: TCP
+    targetPort: alien-http
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alien-deployment
+  namespace: alien
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: alien-app
+  template:
+    metadata:
+      labels:
+        app: alien-app
+    spec:
+      enableServiceLinks: false
+      automountServiceAccountToken: false
+      containers:
+      - name: alien
+        image: trojanctf2025challenges.azurecr.io/ai/alien
+        ports:
+          - name: alien-http
+            containerPort: 8080
+        env:
+          - name: OPENAI_API_KEY
+            valueFrom:
+              secretKeyRef:
+                name: chatgpt-api-key
+                key: api-key
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: alien-ingress-route
+  namespace: alien
+spec:
+  entryPoints:
+    - websecure
+  routes:
+  - match: Host(`alien.chall.trojanc.tf`) && PathPrefix(`/`)
+    kind: Rule
+    services:
+    - name: alien-service
+      port: alien-http
+  tls: 

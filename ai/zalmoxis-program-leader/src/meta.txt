@@ -1,0 +1,9 @@
+Name: Zalmoxis Program: Leader
+Description:
+    TODO
+
+files:
+    None
+
+difficulty: hard
+flag: Trojan{w3_wIll_n0t_1nVadE_You_anym0re_Sm4rt_HumAns}

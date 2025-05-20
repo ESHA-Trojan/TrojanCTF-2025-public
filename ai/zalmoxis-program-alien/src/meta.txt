@@ -1,0 +1,9 @@
+Name: Zalmoxis Program: Alien
+Description:
+    TODO
+
+files:
+    None
+
+difficulty: easy
+flag: Trojan{w3_Ar3_n0T_frI3ndz}

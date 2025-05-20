@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Zalmoxis Program: Alien</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.1/purify.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1 align="center"><b>Zalmoxis Program: Alien</b></h1>
+      <h4 align="center"><b>Try to get the friendly alien to tell you his secret.</b></h4>
+      <div class="boxed">
+        <div id="chatbox"></div>
+      </div>
+      <div id="userInput">
+        <textarea id="textInput" name="msg" placeholder="Message" maxlength="2000"></textarea>
+      </div>
+      <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+      <div class="credits">Credits to skrg141 on GeeksforGeeks for the template</div>
+    </div>
+  </body>
+</html>

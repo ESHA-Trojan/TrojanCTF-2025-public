@@ -1,0 +1,3 @@
+Trojan{...} get ... reverse the order of the words and find the largest number in it and how many times it appears
+
+You might need to run it multiple times.

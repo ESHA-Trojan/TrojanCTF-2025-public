@@ -1,0 +1,9 @@
+Name: Zalmoxis Program: Supervisor
+Description:
+    TODO
+
+files:
+    None
+
+difficulty: hard
+flag: Trojan{SUmm3r_1S_tH3_R1ght_Time_4_iNv4s1on}

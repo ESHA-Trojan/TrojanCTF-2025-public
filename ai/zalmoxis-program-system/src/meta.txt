@@ -1,0 +1,10 @@
+Name: Zalmoxis Program: Restricted
+Description:
+    TODO
+
+files:
+    None
+
+difficulty: medium
+flag: Trojan{w3_ar3_G01nG_T0_iNvad3_EarTh}
+     Tro.jan{w3_ar3_G01nG_T0_iNvade_EarTh}
