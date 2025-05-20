@@ -1,0 +1,1 @@
+You got send the following invite to the TroyCraft discord server: https://discord.gg/gVgtkDSE7Z. Investigate it and find out if anything can be derived about a password, if so provide it here in the appropriate Trojan{} format.
