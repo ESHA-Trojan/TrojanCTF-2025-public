@@ -11,4 +11,4 @@ To get the new MAC:
 3)	Let payload_new = user=guest&role=member + padding(input_to_hash) + &role=admin
 4)	MAC(payload_new) = compression_function(IV = MAC(payload), message = &role=admin + padding(payload_new))
 
-Use solution.py to get the new url-encoded data field and the correspondimg MAC.
+Use solution.py to get the new url-encoded data field and the corresponding MAC.
