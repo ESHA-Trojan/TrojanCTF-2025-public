@@ -108,22 +108,22 @@ def _left_rotate(n, b):
 # Example usage
 if __name__ == "__main__":
     # Original data and secret key
-    secret_key = b"s3cr3tk3y123"  # 12 bytes
+    # secret_key = b"whisking-crumpled-cartwheel-drew"  # 32 bytes
     original_data = b"user=guest&role=member"
-    input_to_hash = secret_key + original_data
+    # input_to_hash = secret_key + original_data
 
     # Step 1: Compute original SHA-1 hash
-    original_hash = hashlib.sha1(input_to_hash).digest()
+    original_hash = bytes.fromhex("49fed001fe4c84a9468711fa33784a1b6b5d3588")
     print(f"Original SHA-1 hash: {original_hash.hex()}")
 
-    print(f"This implementation SHA-1 hash: {sha1([0x67452301, 0xEFCDAB89, 0x98BADCFE, 0x10325476, 0xC3D2E1F0], input_to_hash + compute_padding(len(input_to_hash))).hex()}")
-    print(f"Padding: ", compute_padding(len(input_to_hash)))
+    # print(f"This implementation SHA-1 hash: {sha1([0x67452301, 0xEFCDAB89, 0x98BADCFE, 0x10325476, 0xC3D2E1F0], input_to_hash + compute_padding(len(input_to_hash))).hex()}")
+    # print(f"Padding: ", compute_padding(len(input_to_hash)))
 
     # Step 2: Perform length extension attack
     new_data = b"&role=admin"
-    print(len(secret_key))
+    # print(len(secret_key))
     new_hash, forged_message = sha1_length_extension(
-        original_hash, original_data, new_data, len(secret_key)
+        original_hash, original_data, new_data, 32
     )
 
     # Step 3: Output results
